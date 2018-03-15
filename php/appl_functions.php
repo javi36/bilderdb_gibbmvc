@@ -39,9 +39,14 @@ function login() {
 function registration() {
     setValue("phpmodule", $_SERVER['PHP_SELF']."?id=".getValue("func"));
 
-    if (isset($_POST['email'])){
+    $passwort1 = $_POST['passwort'];
+    $passwort2 = $_POST['passwort2'];
 
-        db_insert_benutzer($_POST);
+    if (isset($_POST['email'])){
+        if ($passwort1 == $passwort2){
+            db_insert_benutzer($_POST);
+        }
+
     }
 
     return runTemplate( "../templates/".getValue("func").".htm.php" );
