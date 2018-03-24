@@ -4,9 +4,8 @@
  *  @version März 2018
  *  Dieses Modul beinhaltet Funktionen, welche die Anwendungslogik implementieren.
  */
-$meldung = "";
-$email = "";
-$passwort = "";
+
+
 /*
  * Beinhaltet die Anwendungslogik zum Login
  */
@@ -16,19 +15,22 @@ function login() {
 
 
 
-   /* if (isset($_POST['form-username'])) {
-        $email = $_POST['form-username'];
-        $passwort = $_POST['form-password'];
+    if (isset($_POST['email'])) {
 
-        $user = getUserIdFromDb($email, $passwort);
+        $email = $_POST['email'];
+        $passwort = $_POST['passwort'];
+
+        $user = db_select_user($email, $passwort);
 
         if ($user == 0) {
-            $meldung = "Falscher Benutzername oder Passwort";
+            $message = "Falsche Anmeldedaten";
+            echo "<script type='text/javascript'>alert('$message');</script>";
         } else {
-            $_SESSION['uid'] = $user;
-            header('Location: index.php?function=entries_private');
+            $_SESSION['bid'] = $user;
+            $message = "Supi guti";
+            echo "<script type='text/javascript'>alert('$message');</script>";
         }
-    }*/
+    }
 
     return runTemplate( "../templates/".getValue("func").".htm.php" );
 }
@@ -39,16 +41,28 @@ function login() {
 function registration() {
     setValue("phpmodule", $_SERVER['PHP_SELF']."?id=".getValue("func"));
 
-    $passwort1 = $_POST['passwort'];
-    $passwort2 = $_POST['passwort2'];
+    if (isset($_POST['regi_email'])){
+        $passwort = $_POST['regi_passwort'];
+        $passwort2 = $_POST['regi_passwort2'];
+        if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $_POST['regi_passwort'])) {
+            $result = '<div class="alert alert-danger">Sorry there was an error sending your message. Please try again later</div>';
 
-    if (isset($_POST['email'])){
-        if ($passwort1 == $passwort2){
-            db_insert_benutzer($_POST);
+        }else if ($passwort == $passwort2) {
+                db_insert_benutzer($_POST);
         }
 
     }
 
     return runTemplate( "../templates/".getValue("func").".htm.php" );
 }
+
+function logout() {
+    //setValue("phpmodule", $_SERVER['PHP_SELF']."?id=".getValue("func"));
+
+    session_destroy();
+
+
+    return runTemplate( "../templates/index.htm.php" );
+}
+
 ?>

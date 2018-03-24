@@ -8,10 +8,30 @@
  */
 
 function db_insert_benutzer($newBenutzer){
-    $sql = "insert into benutzer (nickName, email, passwort)
-            VALUES ('".$newBenutzer['nickname']."',
-            '".$newBenutzer['email']."',
-            '".$newBenutzer['passwort']."')";
+
+        $sql = "insert into benutzer (email, passwort, nickname)
+            VALUES ('".$newBenutzer['regi_email']."',
+            '".md5($newBenutzer['regi_passwort'])."',
+            '".$newBenutzer['regi_nickname']."')";
+
     sqlQuery($sql);
 }
+
+function db_select_user($email, $passwort){
+
+    $result = "SELECT bid FROM benutzer WHERE email='".$email."' AND passwort='".md5($passwort)."' LIMIT 1";
+    return sqlSelect($result);
+
+
+}
+
+function getUserNickname($email) {
+
+    $result = "SELECT nickname FROM benutzer WHERE email=".$email;
+
+    return sqlSelect($result);
+}
+
+
+
 ?>

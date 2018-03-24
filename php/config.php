@@ -5,10 +5,15 @@
  *  Dieses Modul definert alle Konfigurationsparameter und stellt die DB-Verbindung her
  */
 
-// Funktionen
-setValue("cfg_func_list", array("login","registration"));
-// Inhalt des Menus
-setValue("cfg_menu_list", array("login"=>"Login","registration"=>"Registration"));
+    setValue("cfg_func_private_list", array("logout"));
+    // Inhalt des Menus
+    setValue("cfg_menu_private_list", array("logout"=>"Logout"));
+
+    // Funktionen
+    setValue("cfg_func_list", array("login","registration"));
+    // Inhalt des Menus
+    setValue("cfg_menu_list", array("login"=>"Login","registration"=>"Registration"));
+
 
 // Datenbankverbindung herstellen
 $db = mysqli_connect("127.0.0.1", "root", "gibbiX12345", "bilderdb");

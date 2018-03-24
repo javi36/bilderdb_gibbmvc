@@ -165,3 +165,28 @@ function isNumber($value) {
   if (is_numeric($value)) return true;
   else return false;
 }
+
+// Prüft, ob der Benutzer angemeldet ist
+function getUserIdFromSession() {
+    if (isset($_SESSION['bid'])) {
+        $sessionId = $_SESSION['bid'];
+        if (!isset($sessionId)) {
+            return 0;
+        }
+        return $sessionId;
+    } else{
+        return 0;
+    }
+}
+// Setzt der Benutzername oben links
+function getMenuTitle() {
+    $loggedInUser = getUserIdFromSession();
+    if ($loggedInUser != 0) {
+
+        if (getUserNickname($loggedInUser) == null){
+            return 'Wilkommen ' . db_select_user($loggedInUser, $_POST['passwort']);
+        }else{
+            return 'Wilkommen ' . getUserNickname($loggedInUser);
+        }
+    }
+}

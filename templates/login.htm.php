@@ -7,9 +7,9 @@
 	</div>
   </div>
   <div class="form-group control-group">
-	<label class="control-label col-md-offset-2 col-md-2" for="password">Passwort</label>
+	<label class="control-label col-md-offset-2 col-md-2" for="passwort">Passwort</label>
 	<div class="col-md-4">
-	  <input type="password" class="form-control" id="password" name="password" value="" />
+	  <input type="password" class="form-control" id="passwort" name="passwort" value="" />
 	</div>
   </div>
   <div class="form-group control-group">

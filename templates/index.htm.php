@@ -23,7 +23,14 @@
 		<a class="navbar-brand">Bilder-DB</a>
       </div>
 	  <ul class="nav navbar-nav">
-        <?php echo getMenu(getValue("cfg_menu_list")); ?>
+        <?php
+        $loggedInUser = getUserIdFromSession();
+        if ($loggedInUser != 0) {
+            echo getMenu(getValue("cfg_menu_private_list"));
+        }else {
+            echo getMenu(getValue("cfg_menu_list"));
+        }
+        ?>
       </ul>
 	</div>
   </nav>
