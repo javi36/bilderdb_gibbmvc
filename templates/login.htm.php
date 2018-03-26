@@ -18,4 +18,5 @@
 	</div>
   </div>
 </form>
+    <p><?php echo getValue("LoginError")?></p>
 </div>

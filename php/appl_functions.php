@@ -5,15 +5,13 @@
  *  Dieses Modul beinhaltet Funktionen, welche die Anwendungslogik implementieren.
  */
 
-
+$meldung = '';
 /*
  * Beinhaltet die Anwendungslogik zum Login
  */
 function login() {
   // Template abfüllen und Resultat zurückgeben
   setValue("phpmodule", $_SERVER['PHP_SELF']."?id=".getValue("func"));
-
-
 
     if (isset($_POST['email'])) {
 
@@ -24,11 +22,10 @@ function login() {
 
         if ($user == 0) {
             $message = "Falsche Anmeldedaten";
-            echo "<script type='text/javascript'>alert('$message');</script>";
+            setValue("LoginError", $message);
         } else {
             $_SESSION['bid'] = $user;
-            $message = "Supi guti";
-            echo "<script type='text/javascript'>alert('$message');</script>";
+            setValue("LoginError", "");
         }
     }
 
@@ -41,28 +38,29 @@ function login() {
 function registration() {
     setValue("phpmodule", $_SERVER['PHP_SELF']."?id=".getValue("func"));
 
-    if (isset($_POST['regi_email'])){
+    if (isset($_POST['regi_email']) | $_POST['regi_passwort']){
         $passwort = $_POST['regi_passwort'];
         $passwort2 = $_POST['regi_passwort2'];
         if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $_POST['regi_passwort'])) {
-            $result = '<div class="alert alert-danger">Sorry there was an error sending your message. Please try again later</div>';
+            $meldung = 'Der passwort entspricht nicht and die Richtlinien!';
 
         }else if ($passwort == $passwort2) {
-                db_insert_benutzer($_POST);
+            db_insert_benutzer($_POST);
+            return runTemplate( "../templates/index.htm.php" );
         }
 
+    }else{
+        $meldung = 'Formulardaten fehlen';
     }
 
-    return runTemplate( "../templates/".getValue("func").".htm.php" );
+   return runTemplate( "../templates/".getValue("func").".htm.php" );
 }
 
 function logout() {
-    //setValue("phpmodule", $_SERVER['PHP_SELF']."?id=".getValue("func"));
-
     session_destroy();
 
 
-    return runTemplate( "../templates/index.htm.php" );
+    header("Location: index.php");
 }
 
 ?>

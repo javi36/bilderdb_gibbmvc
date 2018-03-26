@@ -21,7 +21,8 @@ if (!in_array($func, $flist)) $func = $flist[0];
 // Aktive Funktion global speichern, da diese später noch verwendet wird
 setValue("func", $func);
 // Funktion aufrufen und Rückgabewert in "inhalt" speichern
-setValue("inhalt", $func());
+$result = $func();
+setValue("inhalt", $result);
 
 // Haupttemplate aufrufen, Ausgabe an Client (Browser) senden
 echo runTemplate("../templates/index.htm.php");

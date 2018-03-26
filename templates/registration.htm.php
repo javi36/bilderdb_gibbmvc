@@ -31,7 +31,12 @@
   </div>
     <div class="form-group control-group ">
         <div class="col-md-offset-4 col-md-4">
-            <?php $result=""; echo $result; ?>
+           <?php
+                 if (!empty($meldung)) {
+                     echo '<p class="alert alert-danger">'.$meldung.'</p>';
+                 }
+
+               ?>
         </div>
     </div>
 

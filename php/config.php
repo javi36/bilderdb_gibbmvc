@@ -5,12 +5,11 @@
  *  Dieses Modul definert alle Konfigurationsparameter und stellt die DB-Verbindung her
  */
 
-    setValue("cfg_func_private_list", array("logout"));
     // Inhalt des Menus
     setValue("cfg_menu_private_list", array("logout"=>"Logout"));
 
     // Funktionen
-    setValue("cfg_func_list", array("login","registration"));
+    setValue("cfg_func_list", array("login","registration", "logout"));
     // Inhalt des Menus
     setValue("cfg_menu_list", array("login"=>"Login","registration"=>"Registration"));
 
