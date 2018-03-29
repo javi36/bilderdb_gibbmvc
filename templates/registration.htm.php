@@ -7,19 +7,19 @@
         </div>
     </div>
     <div class="form-group control-group">
-	<label class="control-label col-md-offset-2 col-md-2" for="regi_email">E-Mail</label>
+	<label class="control-label col-md-offset-2 col-md-2" for="regi_email">E-Mail *</label>
 	<div class="col-md-4">
 	  <input type="email" class="form-control" id="regi_email" name="regi_email" value="" />
 	</div>
   </div>
   <div class="form-group control-group">
-	<label class="control-label col-md-offset-2 col-md-2" for="regi_passwort">Passwort</label>
+	<label class="control-label col-md-offset-2 col-md-2" for="regi_passwort">Passwort *</label>
 	<div class="col-md-4">
 	  <input type="password" class="form-control" id="regi_passwort" name="regi_passwort" value="" />
 	</div>
   </div>
     <div class="form-group control-group">
-        <label class="control-label col-md-offset-2 col-md-2" for="regi_passwort2">Passwort widerholen</label>
+        <label class="control-label col-md-offset-2 col-md-2" for="regi_passwort2">Passwort widerholen *</label>
         <div class="col-md-4">
             <input type="password" class="form-control" id="regi_passwort2" name="regi_passwort2" value="" />
         </div>
@@ -31,12 +31,8 @@
   </div>
     <div class="form-group control-group ">
         <div class="col-md-offset-4 col-md-4">
-           <?php
-                 if (!empty($meldung)) {
-                     echo '<p class="alert alert-danger">'.$meldung.'</p>';
-                 }
 
-               ?>
+            <p><?php echo getValue("RegiError")?></p>
         </div>
     </div>
 

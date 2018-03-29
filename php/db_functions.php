@@ -27,11 +27,16 @@ function db_select_user($email, $passwort){
 
 function getUserNickname($email) {
 
-    $result = "SELECT nickname FROM benutzer WHERE email=".$email;
+    $result = "SELECT nickname FROM benutzer WHERE email='.$email.'";
 
     return sqlSelect($result);
 }
 
+function db_SelectAllEmails($regiEmail){
 
+    $result = "SELECT email FROM benutzer WHERE email ='.$regiEmail.'";
+    print_r($result);
+    return sqlSelect($result);
+}
 
 ?>

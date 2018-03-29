@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div style="margin-top: 40px;" class="col-md-12">
 <form name="kontakt" class="form-horizontal form-condensed" action="" method="post">
   <div class="form-group control-group">
 	<label class="control-label col-md-offset-2 col-md-2" for="email">E-Mail</label>
@@ -17,6 +17,10 @@
 	  <button type="submit" class="btn btn-success" name="login" id="login">login</button>
 	</div>
   </div>
+    <div class="form-group control-group ">
+        <div class="col-md-offset-4 col-md-4">
+            <p><?php echo getValue("LoginError")?></p>
+        </div>
+    </div>
 </form>
-    <p><?php echo getValue("LoginError")?></p>
 </div>
