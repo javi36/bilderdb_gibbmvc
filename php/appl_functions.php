@@ -43,19 +43,22 @@ function registration()
     if (isset($_POST['regi_email']) || $_POST['regi_passwort']) {
         $passwort = $_POST['regi_passwort'];
         $passwort2 = $_POST['regi_passwort2'];
+        if (db_SelectAllEmails($_POST['regi_email']) == ""){
+            $meldung = 'Email bereits vergeben';
+            setValue("RegiError", $meldung);
+        }
         if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $_POST['regi_passwort'])) {
             $meldung = 'Der passwort entspricht nicht and die Richtlinien!';
             setValue("RegiError", $meldung);
-        } else if ($passwort != $passwort2) {
+        }
+        if ($passwort == $passwort2) {
+            setValue("RegiError", "");
+            db_insert_benutzer($_POST);
+            header("Location: index.php");
+        }else{
             $meldung = 'Passwörter waren nicht identisch';
             setValue("RegiError", $meldung);
-        }else if (db_SelectAllEmails($_POST['regi_email']) == ""){
-                $meldung = 'Email bereits vergeben';
-                setValue("RegiError", $meldung);
-            }else{
-                db_insert_benutzer($_POST);
-                header("Location: index.php");
-                }
+        }
     } else {
         $meldung = 'Die * markierte Felder sind Erforderlich';
         setValue("RegiError", $meldung);
