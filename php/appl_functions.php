@@ -14,7 +14,7 @@ function login()
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
 
     if (isset($_POST['email'])) {
-
+        print_r($_POST['email']);
         $email = $_POST['email'];
         $passwort = $_POST['passwort'];
 
