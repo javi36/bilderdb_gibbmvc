@@ -1,40 +1,47 @@
-<div class="col-md-12">
-<form name="registration" class="form-horizontal form-condensed" action="" method="post">
-    <div class="form-group control-group">
-        <label class="control-label col-md-offset-2 col-md-2" for="regi_nickname">Nickname</label>
-        <div class="col-md-4">
-            <input type="text" class="form-control" id="regi_nickname" name="regi_nickname" value="" />
-        </div>
-    </div>
-    <div class="form-group control-group">
-	<label class="control-label col-md-offset-2 col-md-2" for="regi_email">E-Mail *</label>
-	<div class="col-md-4">
-	  <input type="email" class="form-control" id="regi_email" name="regi_email" value="" />
-	</div>
-  </div>
-  <div class="form-group control-group">
-	<label class="control-label col-md-offset-2 col-md-2" for="regi_passwort">Passwort *</label>
-	<div class="col-md-4">
-	  <input type="password" class="form-control" id="regi_passwort" name="regi_passwort" value="" />
-	</div>
-  </div>
-    <div class="form-group control-group">
-        <label class="control-label col-md-offset-2 col-md-2" for="regi_passwort2">Passwort widerholen *</label>
-        <div class="col-md-4">
-            <input type="password" class="form-control" id="regi_passwort2" name="regi_passwort2" value="" />
-        </div>
-    </div>
-  <div class="form-group control-group">
-	<div class="col-md-offset-4 col-md-4">
-	  <button type="submit" class="btn btn-success" name="registration" id="registration">Registration</button>
-	</div>
-  </div>
-    <div class="form-group control-group ">
-        <div class="col-md-offset-4 col-md-4">
 
-            <p><?php echo getValue("RegiError")?></p>
-        </div>
-    </div>
+<link rel="stylesheet" type="text/css" href="../css/LoginAndRegister.css">
+<div class="limiter" id="divregi"  style=" margin-bottom: fill; margin-right: fill">
+    <div class="container-fluid container-login100" style="background-image: url('../images/bg-01.jpg');">
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="height: 850px;">
+        <form class="login100-form validate-form" name="registration" action="" method="post" >
+            <div style="margin-bottom: 60px;">
+					<span class="login100-form-title p-b-49" style="font-size: 50px; color: rgb(150,86,242); font-weight: bold; ">
+						Registration
+					</span>
+                <p style="color: rgb(150,86,242);"><?php echo getValue("RegiError")?></p>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Password is required" style="padding-bottom: 40px;">
+                <span class="label-input100"  style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;" for="regi_nickname">Nickname</span>
+                <input class="input100" type="text" id="regi_nickname" name="regi_nickname" style= "border-bottom: 1px solid #ccc !important;"/>
+                <span class="focus-input100" data-symbol="&#xf206;"></span>
+            </div>
+            <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired" style="padding-bottom: 40px;" >
+                <span class="label-input100" style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;  " for="regi_email">Email *</span>
+                <input class="input100" type="email" id="regi_email" name="regi_email"  style="border-bottom: 1px solid #ccc !important;">
+                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Password is required" style="padding-bottom: 40px;">
+                <span class="label-input100"  style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;"for="regi_passwort">Passwort *</span>
+                <input class="input100" type="password" id="regi_passwort" name="regi_passwort" style= "border-bottom: 1px solid #ccc !important;" >
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Password is required" style="padding-bottom: 40px;">
+                <span class="label-input100"  style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;" for="regi_passwort2">Passwort wiederholen *</span>
+                <input class="input100" type="password"id="regi_passwort2" name="regi_passwort2" style= "border-bottom: 1px solid #ccc !important;" >
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
+            </div>
 
-</form>
+            <div class="container-login100-form-btn">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <button type="submit" class="login100-form-btn" name="registration" id="registration">
+                        Registrieren
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
+
+
+
