@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" type="text/css" href="../css/LoginAndRegister.css">
-<div class="limiter" style="margin-top: -40px;">
-    <div class="container-fluid container-login100" style="background-image: url('../images/bg-01.jpg'); margin-bottom: fill; margin-right: fill">
+<div class="limiter">
+    <div class="container-fluid container-login100" >
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" ">
             <form class="login100-form validate-form" name="kontakt" action="" method="post">
                 <div style="margin-bottom: 60px;">
