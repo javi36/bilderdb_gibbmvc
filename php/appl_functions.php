@@ -38,9 +38,9 @@ function login()
  */
 function registration()
 {
-    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
 
-    if (isset($_POST['regi_email']) || $_POST['regi_passwort']) {
+    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
+    if (isset($_POST['regi_email']) || isset($_POST['regi_passwort'])) {
         $passwort = $_POST['regi_passwort'];
         $passwort2 = $_POST['regi_passwort2'];
         if (db_SelectAllEmails($_POST['regi_email']) == ""){
@@ -50,8 +50,7 @@ function registration()
         if (!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,}$/', $_POST['regi_passwort'])) {
             $meldung = 'Der passwort entspricht nicht and die Richtlinien!';
             setValue("RegiError", $meldung);
-        }
-        if ($passwort == $passwort2) {
+        }else if ($passwort == $passwort2) {
             setValue("RegiError", "");
             db_insert_benutzer($_POST);
             header("Location: index.php");

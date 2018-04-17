@@ -9,7 +9,7 @@
 						Login
 					</span>
 
-                <p><?php echo getValue("LoginError")?></p>
+                    <p><?php echo getValue("LoginError"); ?></p>
                 </div>
                 <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired" style="padding-bottom: 40px;" >
                     <span class="label-input100" style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;  " for="email">Username</span>

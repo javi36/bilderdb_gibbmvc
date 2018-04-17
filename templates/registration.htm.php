@@ -10,12 +10,12 @@
 					</span>
                 <p style="color: rgb(150,86,242);"><?php echo getValue("RegiError")?></p>
             </div>
-            <div class="wrap-input100 validate-input" data-validate="Password is required" style="padding-bottom: 40px;">
+            <div class="wrap-input100 validate-input" data-validate="Nickname is required" style="padding-bottom: 40px;">
                 <span class="label-input100"  style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;" for="regi_nickname">Nickname</span>
                 <input class="input100" type="text" id="regi_nickname" name="regi_nickname" style= "border-bottom: 1px solid #ccc !important;"/>
                 <span class="focus-input100" data-symbol="&#xf206;"></span>
             </div>
-            <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired" style="padding-bottom: 40px;" >
+            <div class="wrap-input100 validate-input m-b-23" data-validate = "Email is required" style="padding-bottom: 40px;" >
                 <span class="label-input100" style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;  " for="regi_email">Email *</span>
                 <input class="input100" type="email" id="regi_email" name="regi_email"  style="border-bottom: 1px solid #ccc !important;">
                     <span class="focus-input100" data-symbol="&#xf206;"></span>
@@ -27,7 +27,7 @@
             </div>
             <div class="wrap-input100 validate-input" data-validate="Password is required" style="padding-bottom: 40px;">
                 <span class="label-input100"  style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;" for="regi_passwort2">Passwort wiederholen *</span>
-                <input class="input100" type="password"id="regi_passwort2" name="regi_passwort2" style= "border-bottom: 1px solid #ccc !important;" >
+                <input class="input100" type="password" id="regi_passwort2" name="regi_passwort2" style= "border-bottom: 1px solid #ccc !important;" >
                 <span class="focus-input100" data-symbol="&#xf190;"></span>
             </div>
 
