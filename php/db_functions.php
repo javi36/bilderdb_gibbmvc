@@ -39,4 +39,21 @@ function db_SelectAllEmails($regiEmail){
     return sqlSelect($result);
 }
 
+function db_insertGalerie($newGalerie){
+    $loggedInUser = getUserIdFromSession();
+
+    $sql = "insert into galerie (name, beschreibung, fk_bid)
+            VALUES ('".$newGalerie['galerieName']."',
+            '".$newGalerie['galerieBeschreibung']."',
+            '".$loggedInUser[0]['bid']."')";
+
+    sqlQuery($sql);
+}
+
+function db_getAllGalerie($userid){
+
+    $result = "SELECT * FROM galerie WHERE fk_bid = $userid";
+    return sqlSelect($result);
+}
+
 ?>

@@ -73,5 +73,23 @@ function logout()
 
     header("Location: index.php");
 }
+function zeigeMeineGalerien(){
+
+
+    return runTemplate("../templates/member-bereich.htm.php");
+}
+
+function galerieErstellen(){
+    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
+    if (isset($_POST['galerieName'])){
+        db_insertGalerie($_POST);
+        return runTemplate("../templates/member-bereich.htm.php");
+    }else{
+        $meldung = 'Die * markierte Felder sind Erforderlich';
+        setValue("RegiError", $meldung);
+    }
+
+    return runTemplate("../templates/" . getValue("func") . ".htm.php");
+}
 
 ?>

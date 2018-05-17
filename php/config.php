@@ -6,10 +6,10 @@
  */
 
     // Inhalt des Menus
-    setValue("cfg_menu_private_list", array("logout"=>"Logout"));
+    setValue("cfg_menu_private_list", array("logout"=>"Logout","zeigeMeineGalerien"=>"Meine Galerien", "galerieErstellen" =>"Fotogalerie erstellen" ));
 
     // Funktionen
-    setValue("cfg_func_list", array("login","registration", "logout"));
+    setValue("cfg_func_list", array("login","registration", "logout","zeigeMeineGalerien", "galerieErstellen"));
     // Inhalt des Menus
     setValue("cfg_menu_list", array("login"=>"Login","registration"=>"Registration"));
 

@@ -5,36 +5,55 @@
  * Date: 26.03.2018
  * Time: 19:50
  */
+$loggedInUser = getUserIdFromSession();
+$galleries = db_getAllGalerie($loggedInUser[0]['bid']);
+
+?>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<head>
+    <div class="col-md-12">
+        <h3>Meine Galerien  </h3>
+    </div>
+    <style>
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 180px;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<?php
+foreach ($galleries as $galerie){
+
+    echo '<div class="gallery">
+            <a target="_blank">
+                <img src="" alt="" width="100" height="100">
+            </a>
+            <div class="desc">'.$galerie['name'].'</div>
+            <a href=""><i class="material-icon">create</i></a>
+            </div>';
+}
 
 
 ?>
-<button class="btn btn-primary" data-toggle="modal" data-target="#erstellen">Fotogalerie erstellen</button>
 
-<div class="col-md-12">
-   <h3>Willkommen  </h3>
-</div>
+</body>
 
-
-<div class="modal fade" id="erstellen" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Fotogalerie erstellen</h4>
-            </div>
-            <div class="modal-body">
-                <span class="label-input100"  for="galerieName">Name *</span>
-                <input class="input100" type="text" id="galerieName" name="galerieName"  >
-                <br>
-                <span class="label-input100"  for="galerieBeschreibung">Beschreibung</span>
-                <input class="input100" type="text" id="galerieBeschreibung" name="galerieBeschreibung"  >
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success">Erstellen</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
-            </div>
-        </div>
-
-    </div>
-</div>

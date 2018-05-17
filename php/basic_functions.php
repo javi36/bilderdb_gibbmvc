@@ -178,15 +178,3 @@ function getUserIdFromSession() {
         return 0;
     }
 }
-// Setzt der Benutzername oben links
-function getMenuTitle() {
-    $loggedInUser = getUserIdFromSession();
-    if ($loggedInUser != 0) {
-
-        if (getUserNickname($loggedInUser) == null){
-            return 'Wilkommen ' . db_select_user($loggedInUser, $_POST['passwort']);
-        }else{
-            return 'Wilkommen ' . getUserNickname($loggedInUser);
-        }
-    }
-}
