@@ -1,0 +1,104 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
+.wrap-login100{
+    margin-top: 160px;
+    width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 650px;
+    margin-bottom: 30px;
+}
+.limiter{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-top: -40px;
+    background-image: url('../images/bg-02.jpg');
+    margin-bottom: fill;
+    margin-right: fill
+}
+.container-login100{
+
+    margin-right: 20px;
+    width: 100%;
+    Height: auto;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+
+}
+
+.p-r-55{
+    padding-right: 55px;
+}
+
+.p-l-55{
+    padding-left: 55px;
+}
+
+.p-b-54{
+    padding-bottom: 54px;
+}
+
+.p-t-65{
+    padding-top: 65px;
+}
+
+.input100{
+    font-size: 16px;
+    line-height: 1.2em;
+    display: block;
+    width: 100%;
+    height: 55px;
+    background: transparent;
+    padding: 0 7px 0 43px;
+}
+
+input, button{
+    outline: none;
+    border: none;
+
+
+}
+
+.login100-form-btn{
+    border-radius: 130px;
+    background-color: rgb(224, 8, 238);;
+    margin-top: 30px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+}
+button, input{
+    overflow: visible;
+}
+
+textarea:focus, input:focus{
+    border-color: transparent;
+}
+#divregi{
+    margin-top: -130px;
+
+}
