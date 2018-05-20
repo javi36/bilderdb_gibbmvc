@@ -56,4 +56,29 @@ function db_getAllGalerie($userid){
     return sqlSelect($result);
 }
 
+function db_getGalerie($gid){
+
+    $result = "SELECT * FROM galerie WHERE gid = $gid";
+    return sqlSelect($result);
+}
+
+function db_updateGalerie($galerie){
+
+$gid = $_GET['gid'];
+
+    $sql = "Update galerie 
+            Set name = '".$galerie['galerieName']."',
+             beschreibung = '".$galerie['galerieBeschreibung']."'
+             Where gid=$gid";
+
+    sqlQuery($sql);
+}
+
+function db_deleteGalerie(){
+    $gid = $_GET['gid'];
+    $sql = "DELETE FROM galerie WHERE gid=$gid";
+
+    sqlQuery($sql);
+}
+
 ?>

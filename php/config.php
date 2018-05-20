@@ -9,7 +9,8 @@
     setValue("cfg_menu_private_list", array("logout"=>"Logout","zeigeMeineGalerien"=>"Meine Galerien", "galerieErstellen" =>"Fotogalerie erstellen" ));
 
     // Funktionen
-    setValue("cfg_func_list", array("login","registration", "logout","zeigeMeineGalerien", "galerieErstellen"));
+    setValue("cfg_func_list", array("login","registration", "logout"
+    ,"zeigeMeineGalerien", "galerieErstellen", "galerieBearbeiten", "galerieLoeschen", "zeigeMeineBilder"));
     // Inhalt des Menus
     setValue("cfg_menu_list", array("login"=>"Login","registration"=>"Registration"));
 

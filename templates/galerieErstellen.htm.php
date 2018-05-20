@@ -13,8 +13,9 @@
     <input class="input100" type="text" id="galerieName" name="galerieName">
     <br>
     <span class="label-input100" for="galerieBeschreibung">Beschreibung</span>
-    <input class="input100" type="text" id="galerieBeschreibung" name="galerieBeschreibung">
+    <textarea class="input100" rows="6" cols="20" type="text" id="galerieBeschreibung" name="galerieBeschreibung"></textarea>
     <button type="submit" class="btn btn-success">Erstellen</button>
+    <a type="button" href="index.php?id=zeigeMeineGalerien" class="btn btn-warning">Abbrechen</a>
     <p style="color: rgb(150,86,242);"><?php echo getValue("RegiError")?></p>
 </form>
 

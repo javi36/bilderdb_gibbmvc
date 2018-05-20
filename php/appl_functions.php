@@ -75,7 +75,6 @@ function logout()
 }
 function zeigeMeineGalerien(){
 
-
     return runTemplate("../templates/member-bereich.htm.php");
 }
 
@@ -83,7 +82,7 @@ function galerieErstellen(){
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
     if (isset($_POST['galerieName'])){
         db_insertGalerie($_POST);
-        return runTemplate("../templates/member-bereich.htm.php");
+        return zeigeMeineGalerien();
     }else{
         $meldung = 'Die * markierte Felder sind Erforderlich';
         setValue("RegiError", $meldung);
@@ -92,4 +91,27 @@ function galerieErstellen(){
     return runTemplate("../templates/" . getValue("func") . ".htm.php");
 }
 
+function galerieBearbeiten(){
+    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
+    if (isset($_POST['galerieName'])){
+        db_updateGalerie($_POST);
+        return runTemplate("../templates/member-bereich.htm.php");
+    }else{
+        $meldung = 'Die * markierte Felder sind Erforderlich';
+        setValue("RegiError", $meldung);
+    }
+    return runTemplate("../templates/" . getValue("func") . ".htm.php");
+}
+
+function galerieLoeschen(){
+    db_deleteGalerie();
+
+    return zeigeMeineGalerien();
+}
+
+function zeigeMeineBilder(){
+    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
+
+    return runTemplate("../templates/" . getValue("func") . ".htm.php");
+}
 ?>
