@@ -17,8 +17,6 @@
 					<span class="login100-form-title p-b-49" style="font-size: 50px; color: rgb(150,86,242); font-weight: bold; ">
 						Galerie erstellen
 					</span>
-
-                <p style="color: rgb(150,86,242);"><?php echo getValue("RegiError")?></p>
             </div>
             <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired" style="padding-bottom: 40px;" >
                 <span class="label-input100" style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;  " for="galerieName">Name *</span>
@@ -28,7 +26,8 @@
 
             <div class="wrap-input100 validate-input" data-validate="Password is required" style="padding-bottom: 40px;">
                 <span class="label-input100"  style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;" for="galerieBeschreibung">Beschreibung</span>
-                <input class="input100" type="text" id="galerieBeschreibung" name="galerieBeschreibung" style= "border-bottom: 1px solid #ccc !important;" >
+                <textarea class="input100" rows="6" cols="20" type="text"style= "border-bottom: 1px solid #ccc !important;"
+                          id="galerieBeschreibung" name="galerieBeschreibung"></textarea>
                 <span class="focus-input100" data-symbol="&#xf190;"></span>
             </div>
 
@@ -38,6 +37,7 @@
                     <button type="submit" class="login100-form-btn" name="login" id="login">
                         Erstellen
                     </button>
+                    <a type="button" href="index.php?id=zeigeMeineGalerien" class="btn btn-warning">Abbrechen</a>
                 </div>
             </div>
         </form>
