@@ -26,7 +26,7 @@ function login()
         } else {
             $_SESSION['bid'] = $user;
             setValue("LoginError", "");
-            return runTemplate("../templates/member-bereich.htm.php");
+            return zeigeMeineGalerien();
         }
     }
 
@@ -53,6 +53,8 @@ function registration()
         }else if ($passwort == $passwort2) {
             setValue("RegiError", "");
             db_insert_benutzer($_POST);
+
+
             header("Location: index.php");
         }else{
             $meldung = 'Passwörter waren nicht identisch';
@@ -82,6 +84,7 @@ function galerieErstellen(){
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
     if (isset($_POST['galerieName'])){
         db_insertGalerie($_POST);
+        mkdir('C:/xampp/htdocs/m151/bilderdb_gibbmvc/uploadedImages/'.getUserIdFromSession()[0]['bid'].$_POST['galerieName']);
         return zeigeMeineGalerien();
     }else{
         $meldung = 'Die * markierte Felder sind Erforderlich';
@@ -104,14 +107,22 @@ function galerieBearbeiten(){
 }
 
 function galerieLoeschen(){
+    $aktuelleGalerie = db_getGalerie($_GET['gid']);
+    loeschen('C:/xampp/htdocs/m151/bilderdb_gibbmvc/uploadedImages/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name']);
     db_deleteGalerie();
-
     return zeigeMeineGalerien();
 }
 
 function zeigeMeineBilder(){
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
 
+
+    if (isset($_FILES['bild'])) {
+        uploadImage();
+    }
+
     return runTemplate("../templates/" . getValue("func") . ".htm.php");
 }
+
+
 ?>

@@ -178,3 +178,50 @@ function getUserIdFromSession() {
         return 0;
     }
 }
+
+function uploadImage(){
+    $newName = time()+rand(1,100);
+    $Path = 'C:\xampp\htdocs\m151\bilderdb_gibbmvc\uploadedImages';
+    $newPath = str_replace("\\", "/", $Path);
+    str_replace("\\", "/", getcwd());
+    $aktuelleGalerie = db_getGalerie($_GET['gid']);
+    $newPath .= '/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name'];
+
+    if (strcmp($_FILES['bild']['type'], 'image/jpeg') === 0){
+        $newPath .= '/'. $newName . '.jpg';
+    }elseif (strcmp($_FILES['bild']['type'], 'image/png') === 0){
+        $newPath .= '/'. $newName . '.png';
+    }elseif (strcmp($_FILES['bild']['type'], 'image/gif') === 0){
+        $newPath .= '/'. $newName . '.gif';
+    }else{
+        $message = "Kein richtigen Format";
+        setValue("uploaded", $message );
+    }
+    if ($_FILES['bild']['size'] <= 4000000){
+        move_uploaded_file($_FILES['bild']['tmp_name'], $newPath);
+        $message = "Erfolgreich hochgeladen";
+        setValue("uploaded", $message );
+    }else{
+        $message = "Bild ist zu gross";
+        setValue("uploaded", $message );
+    }
+
+}
+
+function loeschen($path)
+{
+    if (is_dir($path) === true) {
+        $files = array_diff(scandir($path), array('.', '..'));
+
+        // Durch die vorhandenen Dateien laufen
+        foreach ($files as $file) {
+            loeschen(realpath($path) . '/' . $file);
+        }
+        return rmdir($path);
+    }
+// Datei entfernen
+    else if (is_file($path) === true) {
+    return unlink($path);
+    }
+return false;
+}
