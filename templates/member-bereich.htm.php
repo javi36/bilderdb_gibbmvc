@@ -53,7 +53,7 @@ if ($galleries == null){
     foreach ($galleries as $galerie) {
 
         echo '<div class="gallery">
-            <a href="index.php?id=zeigeMeineBilder&gid=' . $galerie['gid'] . '">
+            <a href="index.php?id=bilderHochladen&gid=' . $galerie['gid'] . '">
                 <img src="" alt="" width="100" height="100">
             </a>
             <div class="desc">' . $galerie['name'] . '</div>

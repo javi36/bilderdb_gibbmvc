@@ -179,24 +179,36 @@ function getUserIdFromSession() {
     }
 }
 
+function getGaleriePfad(){
+    $aktuelleGalerie = db_getGalerie($_GET['gid']);
+
+    return 'C:/xampp/htdocs/m151/bilderdb_gibbmvc/uploadedImages/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name'];
+}
+
+function getBildExtension($bildExtension){
+    $extension = null;
+    if (strcmp($bildExtension, 'image/jpeg') === 0){
+        $extension = '.jpg';
+    }elseif (strcmp($bildExtension, 'image/png') === 0){
+        $extension = '.png';
+    }elseif (strcmp($bildExtension, 'image/gif') === 0) {
+        $extension = '.gif';
+    }
+    return $extension;
+}
+
 function uploadImage(){
     $newName = time()+rand(1,100);
-    $Path = 'C:\xampp\htdocs\m151\bilderdb_gibbmvc\uploadedImages';
-    $newPath = str_replace("\\", "/", $Path);
-    str_replace("\\", "/", getcwd());
-    $aktuelleGalerie = db_getGalerie($_GET['gid']);
-    $newPath .= '/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name'];
+    $newPath = str_replace("\\", "/", getGaleriePfad());
 
-    if (strcmp($_FILES['bild']['type'], 'image/jpeg') === 0){
-        $newPath .= '/'. $newName . '.jpg';
-    }elseif (strcmp($_FILES['bild']['type'], 'image/png') === 0){
-        $newPath .= '/'. $newName . '.png';
-    }elseif (strcmp($_FILES['bild']['type'], 'image/gif') === 0){
-        $newPath .= '/'. $newName . '.gif';
-    }else{
+    $extension = getBildExtension($_FILES['bild']['type']);
+    $newPath .= '/'.$newName.$extension;
+    setValue("bildName",  $newName.$extension);
+    if (is_null($extension)){
         $message = "Kein richtigen Format";
         setValue("uploaded", $message );
     }
+
     if ($_FILES['bild']['size'] <= 4000000){
         move_uploaded_file($_FILES['bild']['tmp_name'], $newPath);
         $message = "Erfolgreich hochgeladen";
@@ -204,6 +216,42 @@ function uploadImage(){
     }else{
         $message = "Bild ist zu gross";
         setValue("uploaded", $message );
+    }
+    return $newPath;
+}
+
+
+function make_thumb($src, $dest, $desired_width) {
+
+    /* read the source image */
+    $source_image = null;
+    if (strcmp($_FILES['bild']['type'], 'image/jpeg') === 0){
+        $source_image = imagecreatefromjpeg($src);
+    }elseif (strcmp($_FILES['bild']['type'], 'image/png') === 0){
+        $source_image = imagecreatefrompng($src);
+    }elseif (strcmp($_FILES['bild']['type'], 'image/gif') === 0) {
+        $source_image = imagecreatefromgif($src);
+    }
+
+    $width = imagesx($source_image);
+    $height = imagesy($source_image);
+
+    /* find the "desired height" of this thumbnail, relative to the desired width  */
+    $desired_height = floor($height * ($desired_width / $width));
+
+    /* create a new, "virtual" image */
+    $virtual_image = imagecreatetruecolor($desired_width, $desired_height);
+
+    /* copy source image at a resized size */
+    imagecopyresampled($virtual_image, $source_image, 0, 0, 0, 0, $desired_width, $desired_height, $width, $height);
+
+    /* create the physical thumbnail image to its destination */
+    if (strcmp($_FILES['bild']['type'], 'image/jpeg') === 0){
+        imagejpeg($virtual_image, $dest);
+    }elseif (strcmp($_FILES['bild']['type'], 'image/png') === 0){
+        imagepng($virtual_image, $dest);
+    }elseif (strcmp($_FILES['bild']['type'], 'image/gif') === 0) {
+        imagegif($virtual_image, $dest);
     }
 
 }

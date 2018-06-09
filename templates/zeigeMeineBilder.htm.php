@@ -17,16 +17,30 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
            data-toggle="tooltip" data-placement="top"
            data-html="true" title="Die Größe darf maximal 4MB sein!">
     <p><?php echo getValue("uploaded"); ?></p>
+    <input class="input100"  name="bildername"  >
 </form>
 
 
 <div class="col-md-12">
     <h2>Galerie <?php echo $aktuelleGalerie[0]['name']; ?> </h2>
     <label>Beschreibung: <?php echo $aktuelleGalerie[0]['beschreibung']; ?></label>
+
+    <h4>Meine Bilder</h4>
     <?php
 
+    $bilderPfade = db_getGalerieBilder();
+    $name = getValue("bildName");
+
+    if (!empty($bilderPfade)) {
+        foreach ($bilderPfade as $bildPfad) {
+            echo '<a href="../uploadedImages/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name'].'/'.$name.'" class="thumbnail">
+        <img src="../uploadedImages/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name'].'/thumbnail/'.$bildPfad['thumbnailName'].'">
+        </a>';
+
+        }
+    }
 
     ?>
-    <h4>Meine Bilder</h4>
+
 </div>
 

@@ -84,7 +84,10 @@ function galerieErstellen(){
     setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
     if (isset($_POST['galerieName'])){
         db_insertGalerie($_POST);
-        mkdir('C:/xampp/htdocs/m151/bilderdb_gibbmvc/uploadedImages/'.getUserIdFromSession()[0]['bid'].$_POST['galerieName']);
+        $path = 'C:/xampp/htdocs/m151/bilderdb_gibbmvc/uploadedImages/'.getUserIdFromSession()[0]['bid'].$_POST['galerieName'];
+        mkdir($path);
+        mkdir($path.'/thumbnail');
+
         return zeigeMeineGalerien();
     }else{
         $meldung = 'Die * markierte Felder sind Erforderlich';
@@ -106,23 +109,29 @@ function galerieBearbeiten(){
     return runTemplate("../templates/" . getValue("func") . ".htm.php");
 }
 
+
 function galerieLoeschen(){
-    $aktuelleGalerie = db_getGalerie($_GET['gid']);
-    loeschen('C:/xampp/htdocs/m151/bilderdb_gibbmvc/uploadedImages/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name']);
+    loeschen(getGaleriePfad());
     db_deleteGalerie();
     return zeigeMeineGalerien();
 }
 
-function zeigeMeineBilder(){
-    setValue("phpmodule", $_SERVER['PHP_SELF'] . "?id=" . getValue("func"));
-
-
+function bilderHochladen(){
     if (isset($_FILES['bild'])) {
-        uploadImage();
+        $bildPfad = uploadImage();
+        $pfad = getGaleriePfad().'/';
+
+        $fileName = time()+rand(1,100);
+        $fileExtension =  getBildExtension($_FILES['bild']['type']);
+
+        $output = $pfad.'thumbnail/'.$fileName.$fileExtension;
+        make_thumb($bildPfad, $output, 250);
+
+        db_insertBild($_POST['bildername'],$bildPfad, $fileName.$fileExtension);
     }
 
-    return runTemplate("../templates/" . getValue("func") . ".htm.php");
-}
 
+    return runTemplate("../templates/zeigeMeineBilder.htm.php");
+}
 
 ?>

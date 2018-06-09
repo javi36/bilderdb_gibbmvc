@@ -35,7 +35,7 @@ function getUserNickname($email) {
 function db_SelectAllEmails($regiEmail){
 
     $result = "SELECT email FROM benutzer WHERE email ='.$regiEmail.'";
-    print_r($result);
+
     return sqlSelect($result);
 }
 
@@ -81,4 +81,23 @@ function db_deleteGalerie(){
     sqlQuery($sql);
 }
 
+function db_insertBild($inputName, $bildPfad, $thumbnailName){
+    $gid = $_GET['gid'];
+
+    $sql = "insert into bilder (gid, bilderName, bildPfad, thumbnailName)
+            VALUES ('".$gid."',
+            '".$inputName."',
+            '".$bildPfad."',
+            '".$thumbnailName."')";
+
+    sqlQuery($sql);
+}
+
+function db_getGalerieBilder(){
+    $gid = $_GET['gid'];
+
+    $result = "SELECT * FROM bilder WHERE gid ='.$gid.'";
+
+    return sqlSelect($result);
+}
 ?>
