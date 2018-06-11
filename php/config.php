@@ -10,7 +10,7 @@
 
     // Funktionen
     setValue("cfg_func_list", array("login","registration", "logout"
-    ,"zeigeMeineGalerien", "galerieErstellen", "galerieBearbeiten", "galerieLoeschen", "bilderHochladen"));
+    ,"zeigeMeineGalerien", "galerieErstellen", "galerieBearbeiten", "galerieLoeschen", "bilderHochladen", "loescheBild"));
     // Inhalt des Menus
     setValue("cfg_menu_list", array("login"=>"Login","registration"=>"Registration"));
 

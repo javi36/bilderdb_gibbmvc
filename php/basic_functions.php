@@ -254,6 +254,8 @@ function make_thumb($src, $dest, $desired_width) {
         imagegif($virtual_image, $dest);
     }
 
+    return $dest;
+
 }
 
 function loeschen($path)

@@ -12,12 +12,12 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
 
 <form method='post' enctype='multipart/form-data'>
     <button class="btn btn-success" type="submit">Hochladen</button>
-    <input  name="bild"
+    <input name="bild"
            type="file" accept="image/*"
            data-toggle="tooltip" data-placement="top"
            data-html="true" title="Die Größe darf maximal 4MB sein!">
     <p><?php echo getValue("uploaded"); ?></p>
-    <input class="input100"  name="bildername"  >
+    <input class="input100" name="bildername">
 </form>
 
 
@@ -33,9 +33,19 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
 
     if (!empty($bilderPfade)) {
         foreach ($bilderPfade as $bildPfad) {
-            echo '<a href="../uploadedImages/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name'].'/'.$name.'" class="thumbnail">
-        <img src="../uploadedImages/'.getUserIdFromSession()[0]['bid'].$aktuelleGalerie[0]['name'].'/thumbnail/'.$bildPfad['thumbnailName'].'">
-        </a>';
+            echo '<div class="gallery">
+		            <div class="container">
+			            <div class="row">
+                            <div class="col-xs-3 gallery-item">
+                                <a href="../uploadedImages/' . getUserIdFromSession()[0]['bid'] . $aktuelleGalerie[0]['name'] . '/' . $name . '" class="thumbnail">
+                                    <img  class="img-responsive img-gallery" src="../uploadedImages/' . getUserIdFromSession()[0]['bid'] . $aktuelleGalerie[0]['name'] . '/thumbnail/' . $bildPfad['thumbnailName'] . '">
+                                    <figcaption class="figure-caption">'.$bildPfad['bilderName'].'</figcaption>
+                                </a>
+                                 <a type="button" class="btn btn-danger"  href="index.php?id=loescheBild&bilderID=' . $bildPfad['bilderID'] . '">Löschen</a>
+                            </div>
+                        </div>
+                    </div>
+                 </div>';
 
         }
     }

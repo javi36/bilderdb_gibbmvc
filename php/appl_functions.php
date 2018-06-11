@@ -117,21 +117,30 @@ function galerieLoeschen(){
 }
 
 function bilderHochladen(){
-    if (isset($_FILES['bild'])) {
-        $bildPfad = uploadImage();
-        $pfad = getGaleriePfad().'/';
+    if (isset($_FILES['bild']) && isset($_POST)) {
+            $bildPfad = uploadImage();
+            $pfad = getGaleriePfad() . '/';
 
-        $fileName = time()+rand(1,100);
-        $fileExtension =  getBildExtension($_FILES['bild']['type']);
+            $fileName = time() + rand(1, 100);
+            $fileExtension = getBildExtension($_FILES['bild']['type']);
 
-        $output = $pfad.'thumbnail/'.$fileName.$fileExtension;
-        make_thumb($bildPfad, $output, 250);
+            $output = $pfad . 'thumbnail/' . $fileName . $fileExtension;
+            $dest = make_thumb($bildPfad, $output, 250);
 
-        db_insertBild($_POST['bildername'],$bildPfad, $fileName.$fileExtension);
+            db_insertBild($_POST['bildername'], $bildPfad, $fileName . $fileExtension, $dest);
     }
 
 
     return runTemplate("../templates/zeigeMeineBilder.htm.php");
 }
 
+function loescheBild(){
+    $image = db_getBildBy($_GET['bilderID']);
+
+   // unlink($image[0]['bildPfad']);
+   // unlink($image[0]['thumbnailPfad']);
+    db_deleteBild($_GET['bilderID']);
+
+    return zeigeMeineGalerien();
+}
 ?>
