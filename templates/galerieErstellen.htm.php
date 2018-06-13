@@ -26,18 +26,18 @@
 
             <div class="wrap-input100 validate-input" data-validate="Password is required" style="padding-bottom: 40px;">
                 <span class="label-input100"  style="font-size: 20px; color: rgb(118,131,239); font-weight: bold;" for="galerieBeschreibung">Beschreibung</span>
-                <textarea class="input100" rows="6" cols="20" type="text"style= "border-bottom: 1px solid #ccc !important;"
-                          id="galerieBeschreibung" name="galerieBeschreibung"></textarea>
+                <input class="input100" rows="6" cols="20" type="text"style= "border-bottom: 1px solid #ccc !important;" id="galerieBeschreibung" name="galerieBeschreibung">
                 <span class="focus-input100" data-symbol="&#xf190;"></span>
             </div>
 
             <div class="container-login100-form-btn">
-                <div class="wrap-login100-form-btn">
-                    <div class="login100-form-bgbtn"></div>
+                <div class="wrap-login100-form-btn col-lg-6">
                     <button type="submit" class="login100-form-btn" name="login" id="login">
                         Erstellen
                     </button>
-                    <a type="button" href="index.php?id=zeigeMeineGalerien" class="btn btn-warning">Abbrechen</a>
+                </div>
+                <div class="wrap-login100-form-btn col-lg-6">
+                    <a type="button" href="index.php?id=zeigeMeineGalerien" class="login100-form-btn">Abbrechen</a>
                 </div>
             </div>
         </form>
