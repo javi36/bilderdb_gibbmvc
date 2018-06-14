@@ -27,7 +27,7 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
 
     <h4>Meine Bilder</h4>
     <?php
-
+ 
     $bilderPfade = db_getGalerieBilder();
     $name = getValue("bildName");
     if (!empty($bilderPfade)) {
