@@ -17,7 +17,7 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
            data-toggle="tooltip" data-placement="top"
            data-html="true" title="Die Größe darf maximal 4MB sein!">
     <p><?php echo getValue("uploaded"); ?></p>
-    <input class="input100" name="bildername">
+    <input class="input100" name="bildername"/>
 </form>
 
 
@@ -30,7 +30,6 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
 
     $bilderPfade = db_getGalerieBilder();
     $name = getValue("bildName");
-
     if (!empty($bilderPfade)) {
         foreach ($bilderPfade as $bildPfad) {
             echo '<div class="gallery">
