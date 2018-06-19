@@ -127,7 +127,7 @@ function bilderHochladen(){
             $output = $pfad . 'thumbnail/' . $fileName . $fileExtension;
             $dest = make_thumb($bildPfad, $output, 250);
 
-            db_insertBild($_POST['bildername'], $bildPfad, $fileName . $fileExtension, $dest);
+            db_insertBild($_POST['bildname'], $bildPfad, $fileName . $fileExtension,getValue("bildName"), $dest);
     }
 
 

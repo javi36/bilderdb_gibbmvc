@@ -81,14 +81,15 @@ function db_deleteGalerie(){
     sqlQuery($sql);
 }
 
-function db_insertBild($inputName, $bildPfad, $thumbnailName, $thumbnailPfad){
+function db_insertBild($inputName, $bildPfad, $thumbnailName, $bildName, $thumbnailPfad){
     $gid = $_GET['gid'];
 
-    $sql = "insert into bilder (gid, bilderName, bildPfad, thumbnailName, thumbnailPfad)
+    $sql = "insert into bilder (gid, benutzerBildName, bildPfad, thumbnailName,bildName, thumbnailPfad)
             VALUES ('".$gid."',
             '".$inputName."',
             '".$bildPfad."',
             '".$thumbnailName."',
+            '".$bildName."',
             '".$thumbnailPfad."')";
 
     sqlQuery($sql);

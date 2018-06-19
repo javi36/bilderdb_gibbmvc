@@ -17,7 +17,7 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
            data-toggle="tooltip" data-placement="top"
            data-html="true" title="Die Größe darf maximal 4MB sein!">
     <p><?php echo getValue("uploaded"); ?></p>
-    <input class="input100" name="bildername"/>
+    <input class="input100" name="bildname"/>
 </form>
 
 
@@ -29,16 +29,15 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
     <?php
  
     $bilderPfade = db_getGalerieBilder();
-    $name = getValue("bildName");
     if (!empty($bilderPfade)) {
         foreach ($bilderPfade as $bildPfad) {
             echo '<div class="gallery">
 		            <div class="container">
 			            <div class="row">
                             <div class="col-xs-3 gallery-item">
-                                <a href="../uploadedImages/' . getUserIdFromSession()[0]['bid'] . $aktuelleGalerie[0]['name'] . '/' . $name . '" class="thumbnail">
+                                <a href="../uploadedImages/' . getUserIdFromSession()[0]['bid'] . $aktuelleGalerie[0]['name'] . '/' . $bildPfad['bildName'] . '" class="thumbnail">
                                     <img  class="img-responsive img-gallery" src="../uploadedImages/' . getUserIdFromSession()[0]['bid'] . $aktuelleGalerie[0]['name'] . '/thumbnail/' . $bildPfad['thumbnailName'] . '">
-                                    <figcaption class="figure-caption">'.$bildPfad['bilderName'].'</figcaption>
+                                    <figcaption class="figure-caption">'.$bildPfad['benutzerBildName'].'</figcaption>
                                 </a>
                                  <a type="button" class="btn btn-danger"  href="index.php?id=loescheBild&bilderID=' . $bildPfad['bilderID'] . '">Löschen</a>
                             </div>
