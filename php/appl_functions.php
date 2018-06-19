@@ -117,7 +117,7 @@ function galerieLoeschen(){
 }
 
 function bilderHochladen(){
-    if (isset($_FILES['bild']) && isset($_POST)) {
+    if (isset($_FILES['bild']) && isset($_POST['bildname'])) {
             $bildPfad = uploadImage();
             $pfad = getGaleriePfad() . '/';
 
@@ -128,6 +128,8 @@ function bilderHochladen(){
             $dest = make_thumb($bildPfad, $output, 250);
 
             db_insertBild($_POST['bildname'], $bildPfad, $fileName . $fileExtension,getValue("bildName"), $dest);
+    }else{
+        setValue("uploaded", "Wählen Sie bitte ein Bild aus und geben sie ihn einen Namen!");
     }
 
 
