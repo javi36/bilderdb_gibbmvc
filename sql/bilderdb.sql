@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 09. Jun 2018 um 21:26
+-- Erstellungszeit: 19. Jun 2018 um 22:18
 -- Server-Version: 10.1.30-MariaDB
 -- PHP-Version: 7.2.1
 
@@ -40,15 +40,7 @@ CREATE TABLE `benutzer` (
 --
 
 INSERT INTO `benutzer` (`bid`, `email`, `passwort`, `nickname`) VALUES
-(1, 'irina@deck.ch', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'irina'),
-(3, 'jmartinezalvarez0@gmail.com', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'javi'),
-(4, 'test@test.ch', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'Test'),
-(5, 'saturn.buergi@gmail.com', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'needToRoll'),
-(27, 'test@xn--kjldfsa-b1a.ch', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'Test'),
-(28, 'hahha@haha.ch', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'hahha'),
-(29, 'sd@sf.cs', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'adsf'),
-(30, 'j@m.ch', '42cd695e0d73e3d0b5774bcb2a0a5f09', ''),
-(31, 'test@gibb.ch', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'test');
+(32, 'javi@test.ch', '42cd695e0d73e3d0b5774bcb2a0a5f09', 'Javi');
 
 -- --------------------------------------------------------
 
@@ -59,10 +51,19 @@ INSERT INTO `benutzer` (`bid`, `email`, `passwort`, `nickname`) VALUES
 CREATE TABLE `bilder` (
   `bilderID` int(11) NOT NULL,
   `gid` int(11) NOT NULL,
-  `bilderName` varchar(100) COLLATE utf8_german2_ci DEFAULT NULL,
+  `benutzerBildName` varchar(100) COLLATE utf8_german2_ci DEFAULT NULL,
   `bildPfad` varchar(100) COLLATE utf8_german2_ci DEFAULT NULL,
-  `thumbnailName` varchar(100) COLLATE utf8_german2_ci DEFAULT NULL
+  `thumbnailName` varchar(100) COLLATE utf8_german2_ci DEFAULT NULL,
+  `bildName` varchar(100) COLLATE utf8_german2_ci NOT NULL,
+  `thumbnailPfad` varchar(100) COLLATE utf8_german2_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_german2_ci;
+
+--
+-- Daten für Tabelle `bilder`
+--
+
+INSERT INTO `bilder` (`bilderID`, `gid`, `benutzerBildName`, `bildPfad`, `thumbnailName`, `bildName`, `thumbnailPfad`) VALUES
+(39, 72, '', 'C:/xampp/htdocs/m151/bilderdb_gibbmvc/uploadedImages/32asdf/1529438270', '1529438205', '1529438270', 'C:/xampp/htdocs/m151/bilderdb_gibbmvc/uploadedImages/32asdf/thumbnail/1529438205');
 
 -- --------------------------------------------------------
 
@@ -82,9 +83,7 @@ CREATE TABLE `galerie` (
 --
 
 INSERT INTO `galerie` (`gid`, `name`, `beschreibung`, `fk_bid`) VALUES
-(8, 'teest2', 'fskljdglfdsgkjlsdfhgksjfhga', 1),
-(27, 'dsf', 'kjf', 31),
-(32, 'sdfgdfewqrihuwerourwiow', 'jfdsjkghhlskfdjhrgwerterter', 31);
+(72, 'asdf', 'sfdgdf', 32);
 
 --
 -- Indizes der exportierten Tabellen
@@ -119,19 +118,19 @@ ALTER TABLE `galerie`
 -- AUTO_INCREMENT für Tabelle `benutzer`
 --
 ALTER TABLE `benutzer`
-  MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT für Tabelle `bilder`
 --
 ALTER TABLE `bilder`
-  MODIFY `bilderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `bilderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT für Tabelle `galerie`
 --
 ALTER TABLE `galerie`
-  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- Constraints der exportierten Tabellen
