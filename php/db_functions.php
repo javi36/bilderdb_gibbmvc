@@ -98,9 +98,12 @@ function db_insertBild($inputName, $bildPfad, $thumbnailName, $bildName, $thumbn
 function db_getGalerieBilder(){
     $gid = $_GET['gid'];
 
-    $result = "SELECT * FROM bilder WHERE gid ='.$gid.'";
+    $result = "SELECT * FROM bilder WHERE gid =" .$gid. ";";
 
-    return sqlSelect($result);
+
+    $answer = sqlSelect($result);
+
+    return $answer;
 }
 
 function db_getBildBy($bilderID){

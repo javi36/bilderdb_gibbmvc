@@ -43,15 +43,15 @@ $aktuelleGalerie = db_getGalerie($_GET['gid']);
     $bilderPfade = db_getGalerieBilder();
     if (!empty($bilderPfade)) {
         foreach ($bilderPfade as $bildPfad) {
-            echo '<div class="gallery">
+            echo '<div class="gallery" >
 		            <div class="container">
 			            <div class="row">
-                            <div class="col-xs-3 gallery-item">
+                            <div class="col-xs-3 gallery-item" style="margin-top: 20px; ">
                                 <a href="../uploadedImages/' . getUserIdFromSession()[0]['bid'] . $aktuelleGalerie[0]['name'] . '/' . $bildPfad['bildName'] . '" class="thumbnail">
                                     <img  class="img-responsive img-gallery" src="../uploadedImages/' . getUserIdFromSession()[0]['bid'] . $aktuelleGalerie[0]['name'] . '/thumbnail/' . $bildPfad['thumbnailName'] . '">
-                                    <figcaption class="figure-caption">'.$bildPfad['benutzerBildName'].'</figcaption>
+                                    <figcaption style="color: black;" class="figure-caption">'.$bildPfad['benutzerBildName'].'</figcaption>
                                 </a>
-                                 <a type="button" class="btn btn-danger"  href="index.php?id=loescheBild&bilderID=' . $bildPfad['bilderID'] . '">Löschen</a>
+                                 <a type="button" class="btn" style="background-color: #FFB3D1; color: white;"  href="index.php?id=loescheBild&bilderID=' . $bildPfad['bilderID'] . '">Löschen</a>
                             </div>
                         </div>
                     </div>
