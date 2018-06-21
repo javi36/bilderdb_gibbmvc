@@ -9,23 +9,35 @@
 $aktuelleGalerie = db_getGalerie($_GET['gid']);
 
 ?>
+<link rel="stylesheet" href="../css/entries.css">
+<div class="limiter" style=" background-image: url('../images/bild.png');">
+<section id="home" class="main-contact parallax-section">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <form method='post' enctype='multipart/form-data'>
 
-<form method='post' enctype='multipart/form-data'>
-    <button class="btn btn-success" type="submit">Hochladen</button>
-    <input name="bild"
-           type="file" accept="image/*"
-           data-toggle="tooltip" data-placement="top"
-           data-html="true" title="Die Größe darf maximal 4MB sein!">
-    <p><?php echo getValue("uploaded"); ?></p>
-    <input class="input100" name="bildname"/>
-</form>
+                    <p><?php echo getValue("uploaded"); ?></p>
+                    <input class="input100" name="bildname" /><br>
+                    <input name="bild" style="display: inline-block !important;margin-top: 20px;"
+                           type="file" accept="image/*"
+                           data-toggle="tooltip" data-placement="top"
+                           data-html="true" title="Die Größe darf maximal 4MB sein!"> <br>
+
+                    <button style="background: #033769; border-color: #033769; margin-top: 20px;" class="btn btn-success" type="submit">Hochladen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-<div class="col-md-12">
-    <h2>Galerie <?php echo $aktuelleGalerie[0]['name']; ?> </h2>
-    <label>Beschreibung: <?php echo $aktuelleGalerie[0]['beschreibung']; ?></label>
 
-    <h4>Meine Bilder</h4>
+<div class="col-md-12" style="text-align: center">
+    <h2 style="color: #033769;">Galerie <?php echo $aktuelleGalerie[0]['name']; ?> </h2>
+    <label style="color: #033769; margin-bottom: 50px;">Beschreibung: <?php echo $aktuelleGalerie[0]['beschreibung']; ?></label>
+
     <?php
  
     $bilderPfade = db_getGalerieBilder();

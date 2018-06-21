@@ -12,37 +12,24 @@ $galleries = db_getAllGalerie($loggedInUser[0]['bid']);
  * Es soll nur ein Modla geöffnet werden.
  */
 ?>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-<head>
-    <div class="col-md-12">
-        <h2>Meine Galerien </h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/entries.css">
+<div class="limiter" style=" background-image: url('../images/BG_projects.jpg');">
+<section id="home" class="main-contact parallax-section">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h1 style="text-align: center" >Willkommen in deinem Memberbereich</h1>
+                <h3 style="text-align: center; margin-bottom: 100px;">Hier kannst du deine Galerien Erstellen, Bearbeiten oder Löschen</h3>
+            </div>
+        </div>
     </div>
+</section>
+</div>
+<div class="container" style="margin-top: 20px; margin-bottom: 30px;">
+    <div class=row">
 
-    <style>
-        div.gallery {
-            margin: 5px;
-            border: 1px solid #ccc;
-            float: left;
-            width: 180px;
-        }
-
-        div.gallery:hover {
-            border: 1px solid #777;
-        }
-
-        div.gallery img {
-            width: 100%;
-            height: auto;
-        }
-
-        div.desc {
-            padding: 15px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
 
 <?php
 if ($galleries == null){
@@ -52,14 +39,14 @@ if ($galleries == null){
 }else {
     foreach ($galleries as $galerie) {
 
-        echo '<div class="gallery">
-            <a href="index.php?id=bilderHochladen&gid=' . $galerie['gid'] . '">
-                <img src="" alt="" width="100" height="100">
-            </a>
-            <div class="desc">' . $galerie['name'] . '</div>
-            <a class="btn btn-primary" href="index.php?id=galerieBearbeiten&gid=' . $galerie['gid'] . '"> Bearbeiten </a>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm">Löschen</button>
-            </div> 
+        echo ' <a href="index.php?id=bilderHochladen&gid=' . $galerie['gid'] . '">
+                <div class="col-md-4" style="text-align: center;">
+                    <img src="" alt="" width="100" height="100">
+                    <div class="desc">' . $galerie['name'] . '</div>
+                        <a class="btn btn-primary" href="index.php?id=galerieBearbeiten&gid=' . $galerie['gid'] . '" > <span class="glyphicon glyphicon-pencil"></span> Edit </a>
+                        <button type="button" class="btn" data-toggle="modal" data-target=".bd-example-modal-sm" style="background-color: #ffb3d1; color: white;"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                </div> </a> 
+                
             ';
         echo '<div class="modal fade bd-example-modal-sm" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm">
@@ -80,12 +67,11 @@ if ($galleries == null){
                     </div>
                 </div>
             </div>
+            
             ';
     }
 }
 
 ?>
 
-
-</body>
 
